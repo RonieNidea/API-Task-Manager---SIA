@@ -11,12 +11,12 @@
 <div class="container">
   <h1>Task Manager</h1>
 
-  <!-- ADD TASK FORM -->
   <form id="taskForm">
     <input type="text" id="taskInput" placeholder="Main Task" required>
     <input type="text" id="assignedTo" placeholder="Assign Person">
     <input type="date" id="deadline">
     <input type="text" id="remarks" placeholder="Task Remarks">
+    
     <select id="category">
       <option value="Work">Work</option>
       <option value="Personal">Personal</option>
@@ -25,7 +25,6 @@
     <button type="submit">Add Task</button>
   </form>
 
-  <!-- SEARCH & FILTER CONTROLS -->
   <div class="controls-group">
     <input type="text" id="searchInput" placeholder="Search task">
     <select id="filterCategory">
@@ -37,7 +36,7 @@
   </div>
 
   <p id="counter"></p>
-  <p id="loading">Loading...</p>
+  <p id="loading">Loading</p>
   <div id="notifications"></div>
 
   <!-- TASK LIST -->
@@ -47,20 +46,24 @@
 <!-- EDIT TASK MODAL -->
 <div id="editModal" class="modal">
   <div class="modal-content">
+    
     <h2>Edit Task</h2>
     <input type="text" id="editTitle" placeholder="Task Title">
     <input type="text" id="editAssignedTo" placeholder="Assign Person">
     <input type="date" id="editDeadline">
     <input type="text" id="editRemarks" placeholder="Remarks">
+    
     <select id="editCategory">
       <option value="Work">Work</option>
       <option value="Personal">Personal</option>
       <option value="School">School</option>
     </select>
+    
     <select id="editStatus">
       <option value="Pending">Pending</option>
       <option value="Completed">Completed</option>
     </select>
+
     <div class="modalButtons">
       <button id="saveEditBtn">Save</button>
       <button id="cancelEditBtn" class="deleteBtn">Cancel</button>
@@ -68,9 +71,9 @@
   </div>
 </div>
 
-<!-- ADD SUBTASK MODAL -->
 <div id="addSubtaskModal" class="modal">
   <div class="modal-content">
+    
     <h2>Add Subtask</h2>
     <input type="text" id="subtaskTitle" placeholder="Subtask Title">
     <input type="text" id="subtaskAssignedTo" placeholder="Assign Person">
@@ -83,18 +86,20 @@
   </div>
 </div>
 
-<!-- EDIT SUBTASK MODAL -->
 <div id="editSubtaskModal" class="modal">
   <div class="modal-content">
+    
     <h2>Edit Subtask</h2>
     <input type="text" id="editSubtaskTitle" placeholder="Subtask Title">
     <input type="text" id="editSubtaskAssignedTo" placeholder="Assign Person">
     <input type="date" id="editSubtaskDeadline">
     <input type="text" id="editSubtaskRemarks" placeholder="Remarks">
+    
     <select id="editSubtaskStatus">
       <option value="Pending">Pending</option>
       <option value="Completed">Completed</option>
     </select>
+    
     <div class="modalButtons">
       <button id="saveSubtaskEditBtn">Save</button>
       <button id="cancelSubtaskEditBtn" class="deleteBtn">Cancel</button>
