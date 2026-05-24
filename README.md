@@ -240,7 +240,7 @@ Full PDF documentation is available in the `/docs` folder, covering:
 ## 🧪 Testing
 
 API endpoints were tested using **Postman**.
-Postman collection is available in `/docs/TaskFlow.postman_collection.json`.
+Postman collection is available in `[/docs/TaskFlow.postman_collection.json](https://www.postman.com/ronienidea-202301639-8023423/sia-task-management/collection/2lesvgq/taskflow-api?action=share&source=copy-link&creator=52009805)`.
 
 ---
 
