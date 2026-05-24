@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow</title>
+  <link rel="stylesheet" href="css/tasks.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>TaskFlow</h1>
+
+  <form id="taskForm">
+    <input type="text" id="taskInput" placeholder="Main Task" required>
+    <input type="text" id="assignedTo" placeholder="Assign Person">
+    <input type="date" id="deadline">
+    <input type="text" id="remarks" placeholder="Task Remarks">
+    
+    <select id="category">
+      <option value="Work">Work</option>
+      <option value="Personal">Personal</option>
+      <option value="School">School</option>
+    </select>
+    <button type="submit">Add Task</button>
+  </form>
+
+  <div class="controls-group">
+    <input type="text" id="searchInput" placeholder="Search task">
+    <select id="filterCategory">
+      <option value="all">All Categories</option>
+      <option value="Work">Work</option>
+      <option value="Personal">Personal</option>
+      <option value="School">School</option>
+    </select>
+  </div>
+
+  <p id="counter"></p>
+  <p id="loading">Loading</p>
+  <div id="notifications"></div>
+
+  <!-- TASK LIST -->
+  <ul id="taskList"></ul>
+</div>
+
+<!-- EDIT TASK MODAL -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    
+    <h2>Edit Task</h2>
+    <input type="text" id="editTitle" placeholder="Task Title">
+    <input type="text" id="editAssignedTo" placeholder="Assign Person">
+    <input type="date" id="editDeadline">
+    <input type="text" id="editRemarks" placeholder="Remarks">
+    
+    <select id="editCategory">
+      <option value="Work">Work</option>
+      <option value="Personal">Personal</option>
+      <option value="School">School</option>
+    </select>
+    
+    <select id="editStatus">
+      <option value="Pending">Pending</option>
+      <option value="Completed">Completed</option>
+    </select>
+
+    <div class="modalButtons">
+      <button id="saveEditBtn">Save</button>
+      <button id="cancelEditBtn" class="deleteBtn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="addSubtaskModal" class="modal">
+  <div class="modal-content">
+    
+    <h2>Add Subtask</h2>
+    <input type="text" id="subtaskTitle" placeholder="Subtask Title">
+    <input type="text" id="subtaskAssignedTo" placeholder="Assign Person">
+    <input type="date" id="subtaskDeadline">
+    <input type="text" id="subtaskRemarks" placeholder="Remarks">
+    <div class="modalButtons">
+      <button id="saveSubtaskBtn">Save</button>
+      <button id="cancelSubtaskBtn" class="deleteBtn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="editSubtaskModal" class="modal">
+  <div class="modal-content">
+    
+    <h2>Edit Subtask</h2>
+    <input type="text" id="editSubtaskTitle" placeholder="Subtask Title">
+    <input type="text" id="editSubtaskAssignedTo" placeholder="Assign Person">
+    <input type="date" id="editSubtaskDeadline">
+    <input type="text" id="editSubtaskRemarks" placeholder="Remarks">
+    
+    <select id="editSubtaskStatus">
+      <option value="Pending">Pending</option>
+      <option value="Completed">Completed</option>
+    </select>
+    
+    <div class="modalButtons">
+      <button id="saveSubtaskEditBtn">Save</button>
+      <button id="cancelSubtaskEditBtn" class="deleteBtn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/tasks.js"></script>
+</body>
+</html>

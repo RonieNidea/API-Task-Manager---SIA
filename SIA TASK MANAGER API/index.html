@@ -1,112 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advanced Task Manager</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TaskFlow — Home</title>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 
-<div class="container">
-  <h1>Task Manager</h1>
+<nav>
+  <a href="index.html" class="logo">Task<span>Flow</span></a>
 
-  <form id="taskForm">
-    <input type="text" id="taskInput" placeholder="Main Task" required>
-    <input type="text" id="assignedTo" placeholder="Assign Person">
-    <input type="date" id="deadline">
-    <input type="text" id="remarks" placeholder="Task Remarks">
-    
-    <select id="category">
-      <option value="Work">Work</option>
-      <option value="Personal">Personal</option>
-      <option value="School">School</option>
-    </select>
-    <button type="submit">Add Task</button>
-  </form>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#how">How It Works</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="index2.html" class="nav-btn">Launch App →</a>
+  </div>
+</nav>
 
-  <div class="controls-group">
-    <input type="text" id="searchInput" placeholder="Search task">
-    <select id="filterCategory">
-      <option value="all">All Categories</option>
-      <option value="Work">Work</option>
-      <option value="Personal">Personal</option>
-      <option value="School">School</option>
-    </select>
+<section class="hero">
+  <div class="hero-badge">
+    <span class="live-dot"></span>
+    <span id="live-status">Connecting...</span>
   </div>
 
-  <p id="counter"></p>
-  <p id="loading">Loading</p>
-  <div id="notifications"></div>
+  <h1>
+    Manage Tasks.<br/>
+    <span>Ship Faster.</span>
+  </h1>
 
-  <!-- TASK LIST -->
-  <ul id="taskList"></ul>
-</div>
+  <p class="hero-sub">
+    Assign tasks, track subtasks, set deadlines and keep your whole team aligned — all in one neon workspace.
+  </p>
 
-<!-- EDIT TASK MODAL -->
-<div id="editModal" class="modal">
-  <div class="modal-content">
-    
-    <h2>Edit Task</h2>
-    <input type="text" id="editTitle" placeholder="Task Title">
-    <input type="text" id="editAssignedTo" placeholder="Assign Person">
-    <input type="date" id="editDeadline">
-    <input type="text" id="editRemarks" placeholder="Remarks">
-    
-    <select id="editCategory">
-      <option value="Work">Work</option>
-      <option value="Personal">Personal</option>
-      <option value="School">School</option>
-    </select>
-    
-    <select id="editStatus">
-      <option value="Pending">Pending</option>
-      <option value="Completed">Completed</option>
-    </select>
+  <div class="hero-cta">
+    <a href="index2.html" class="btn-primary">Launch App</a>
+    <a href="dashboard.html" class="btn-secondary">View Dashboard</a>
+  </div>
 
-    <div class="modalButtons">
-      <button id="saveEditBtn">Save</button>
-      <button id="cancelEditBtn" class="deleteBtn">Cancel</button>
+  <div class="stats-strip">
+    <div class="stat-item">
+      <div class="stat-num" id="s-total">—</div>
+      <div class="stat-label">Total Tasks</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-num" id="s-done">—</div>
+      <div class="stat-label">Completed</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-num" id="s-prog">—</div>
+      <div class="stat-label">In Progress</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-num" id="s-over">—</div>
+      <div class="stat-label">Overdue</div>
     </div>
   </div>
-</div>
+</section>
 
-<div id="addSubtaskModal" class="modal">
-  <div class="modal-content">
-    
-    <h2>Add Subtask</h2>
-    <input type="text" id="subtaskTitle" placeholder="Subtask Title">
-    <input type="text" id="subtaskAssignedTo" placeholder="Assign Person">
-    <input type="date" id="subtaskDeadline">
-    <input type="text" id="subtaskRemarks" placeholder="Remarks">
-    <div class="modalButtons">
-      <button id="saveSubtaskBtn">Save</button>
-      <button id="cancelSubtaskBtn" class="deleteBtn">Cancel</button>
+<section class="section" id="features">
+  <div class="section-label">Features</div>
+  <div class="section-title">Everything your team needs</div>
+
+  <div class="features-grid">
+
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <h3>Task Management</h3>
+      <p>Create structured tasks with titles, descriptions, deadlines, categories and assigned team members.</p>
     </div>
-  </div>
-</div>
 
-<div id="editSubtaskModal" class="modal">
-  <div class="modal-content">
-    
-    <h2>Edit Subtask</h2>
-    <input type="text" id="editSubtaskTitle" placeholder="Subtask Title">
-    <input type="text" id="editSubtaskAssignedTo" placeholder="Assign Person">
-    <input type="date" id="editSubtaskDeadline">
-    <input type="text" id="editSubtaskRemarks" placeholder="Remarks">
-    
-    <select id="editSubtaskStatus">
-      <option value="Pending">Pending</option>
-      <option value="Completed">Completed</option>
-    </select>
-    
-    <div class="modalButtons">
-      <button id="saveSubtaskEditBtn">Save</button>
-      <button id="cancelSubtaskEditBtn" class="deleteBtn">Cancel</button>
+    <div class="feature-card">
+      <div class="feature-icon">✅</div>
+      <h3>Subtasks</h3>
+      <p>Break down big tasks into smaller, trackable subtasks — each with its own status, assignee and deadline.</p>
     </div>
-  </div>
-</div>
 
-<script src="script.js"></script>
+    <div class="feature-card">
+      <div class="feature-icon">👤</div>
+      <h3>Assignments</h3>
+      <p>Delegate work by assigning each task to a specific person for clear ownership and accountability.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">📅</div>
+      <h3>Deadlines</h3>
+      <p>Set due dates and get instant visual warnings when tasks are approaching or past their deadline.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🔄</div>
+      <h3>Status Tracking</h3>
+      <p>Move tasks through Pending → In Progress → Completed with one-click status updates.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Dashboard</h3>
+      <p>Get a real-time overview of all your tasks, progress bars, upcoming deadlines and activity feed.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="section-label">How It Works</div>
+
+  <div class="section-title" style="margin:0 auto 60px">
+    Three steps to stay organized
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Create a Task</h3>
+      <p>Add a main task with title, assignee, deadline and category.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Add Subtasks</h3>
+      <p>Break it into smaller steps and track each one independently.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Track Progress</h3>
+      <p>Update statuses and watch your dashboard update in real time.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Ready to get organized?</h2>
+
+  <p>Jump into the task manager and start collaborating.</p>
+
+  <a href="index2.html" class="btn-primary">
+    Launch App →
+  </a>
+</section>
+
+<footer>
+  <p>
+    TaskFlow &copy; 2025 —
+    <a href="dashboard.html">Dashboard</a> ·
+    <a href="index2.html">Tasks</a>
+  </p>
+</footer>
+
+<script src="js/script.js"></script>
+
 </body>
 </html>

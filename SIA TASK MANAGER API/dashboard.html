@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — TaskFlow</title>
+
+  <link rel="stylesheet" href="css/dashboard.css"/>
+</head>
+<body>
+
+<aside class="sidebar">
+
+  <div class="sidebar-logo">
+    Task<span>Flow</span>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="index.html" class="nav-item">🏠 Home</a>
+    <a href="dashboard.html" class="nav-item active">📊 Dashboard</a>
+    <a href="index2.html" class="nav-item">✅ Tasks</a>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <p>TaskFlow v1.0</p>
+  </div>
+
+</aside>
+
+<main class="main">
+
+  <div class="topbar">
+
+    <h1>Dashboard</h1>
+
+    <div class="topbar-right">
+      <span class="now-time" id="now-time"></span>
+      <button class="refresh-btn" onclick="loadAll()">
+        ↻ Refresh
+      </button>
+    </div>
+
+  </div>
+
+  <div class="stat-cards">
+
+    <div class="stat-card total">
+      <div class="label">Total Tasks</div>
+      <div class="num" id="c-total">—</div>
+      <div class="sub">All tasks</div>
+    </div>
+
+    <div class="stat-card pending">
+      <div class="label">Pending</div>
+      <div class="num" id="c-pending">—</div>
+      <div class="sub">Not started</div>
+    </div>
+
+    <div class="stat-card inprogress">
+      <div class="label">In Progress</div>
+      <div class="num" id="c-progress">—</div>
+      <div class="sub">Active</div>
+    </div>
+
+    <div class="stat-card done">
+      <div class="label">Completed</div>
+      <div class="num" id="c-done">—</div>
+      <div class="sub">Finished</div>
+    </div>
+
+    <div class="stat-card overdue">
+      <div class="label">Overdue</div>
+      <div class="num" id="c-overdue">—</div>
+      <div class="sub">Past deadline</div>
+    </div>
+
+  </div>
+
+  <div class="panel">
+
+    <div class="bar-label">
+      <span class="overall-text">Overall Progress</span>
+      <span id="pct-text" class="pct-text">0% complete</span>
+    </div>
+
+    <div class="progress-track">
+      <div class="bar-seg done" id="bar-done"></div>
+      <div class="bar-seg prog" id="bar-prog"></div>
+      <div class="bar-seg pend" id="bar-pend"></div>
+      <div class="bar-seg over" id="bar-over"></div>
+    </div>
+
+    <div class="bar-legend">
+
+      <div class="legend-item">
+        <div class="legend-dot green"></div>
+        Completed
+      </div>
+
+      <div class="legend-item">
+        <div class="legend-dot blue"></div>
+        In Progress
+      </div>
+
+      <div class="legend-item">
+        <div class="legend-dot yellow"></div>
+        Pending
+      </div>
+
+      <div class="legend-item">
+        <div class="legend-dot red"></div>
+        Overdue
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="two-col">
+
+    <div class="panel">
+
+      <div class="panel-header">
+        <div class="panel-title">Upcoming Deadlines</div>
+        <a href="index2.html" class="see-all">See all →</a>
+      </div>
+
+      <div id="deadlines-list">
+        <div class="loading">Loading...</div>
+      </div>
+
+    </div>
+
+    <div class="panel">
+
+      <div class="panel-header">
+        <div class="panel-title">Recent Activity</div>
+        <a href="index2.html" class="see-all">See all →</a>
+      </div>
+
+      <div id="activity-list">
+        <div class="loading">Loading...</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="panel">
+
+    <div class="panel-header">
+      <div class="panel-title">All Tasks Overview</div>
+      <a href="index2.html" class="see-all">Manage tasks →</a>
+    </div>
+
+    <div id="tasks-table">
+      <div class="loading">Loading...</div>
+    </div>
+
+  </div>
+
+</main>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
