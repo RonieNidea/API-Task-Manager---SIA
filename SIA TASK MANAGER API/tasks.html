@@ -3,11 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TaskFlow</title>
+  <title>Tasks — TaskFlow</title>
   <link rel="stylesheet" href="css/tasks.css">
+  <style>
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      background: rgba(11, 15, 25, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+    }
+
+    .nav-logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 0 10px #00f3ff;
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: #00f3ff; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #00f3ff;
+      border-color: rgba(0, 243, 255, 0.3);
+      background: rgba(0, 243, 255, 0.06);
+    }
+
+    .nav-links a.active {
+      color: #00f3ff;
+      border-color: rgba(0, 243, 255, 0.4);
+      background: rgba(0, 243, 255, 0.08);
+      text-shadow: 0 0 8px rgba(0, 243, 255, 0.4);
+    }
+
+    /* Push content below fixed nav */
+    body { padding-top: 72px; }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid rgba(0, 243, 255, 0.3);
+      color: #00f3ff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .nav-toggle { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px; left: 0; right: 0;
+        flex-direction: column;
+        background: rgba(11, 15, 25, 0.98);
+        border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+        padding: 12px 16px;
+        gap: 4px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a href="index.html" class="nav-logo">Task<span>Flow</span></a>
+
+  <button class="nav-toggle" onclick="
+    document.querySelector('.nav-links').classList.toggle('open')
+  ">☰</button>
+
+  <div class="nav-links">
+    <a href="index.html">🏠 Home</a>
+    <a href="dashboard.html">📊 Dashboard</a>
+    <a href="index2.html" class="active">✅ Tasks</a>
+  </div>
+</nav>
+
+<!-- ── MAIN CONTENT ── -->
 <div class="container">
   <h1>TaskFlow</h1>
 
@@ -16,7 +122,6 @@
     <input type="text" id="assignedTo" placeholder="Assign Person">
     <input type="date" id="deadline">
     <input type="text" id="remarks" placeholder="Task Remarks">
-    
     <select id="category">
       <option value="Work">Work</option>
       <option value="Personal">Personal</option>
@@ -46,24 +151,21 @@
 <!-- EDIT TASK MODAL -->
 <div id="editModal" class="modal">
   <div class="modal-content">
-    
     <h2>Edit Task</h2>
     <input type="text" id="editTitle" placeholder="Task Title">
     <input type="text" id="editAssignedTo" placeholder="Assign Person">
     <input type="date" id="editDeadline">
     <input type="text" id="editRemarks" placeholder="Remarks">
-    
     <select id="editCategory">
       <option value="Work">Work</option>
       <option value="Personal">Personal</option>
       <option value="School">School</option>
     </select>
-    
     <select id="editStatus">
       <option value="Pending">Pending</option>
+      <option value="In Progress">In Progress</option>
       <option value="Completed">Completed</option>
     </select>
-
     <div class="modalButtons">
       <button id="saveEditBtn">Save</button>
       <button id="cancelEditBtn" class="deleteBtn">Cancel</button>
@@ -71,9 +173,9 @@
   </div>
 </div>
 
+<!-- ADD SUBTASK MODAL -->
 <div id="addSubtaskModal" class="modal">
   <div class="modal-content">
-    
     <h2>Add Subtask</h2>
     <input type="text" id="subtaskTitle" placeholder="Subtask Title">
     <input type="text" id="subtaskAssignedTo" placeholder="Assign Person">
@@ -86,20 +188,19 @@
   </div>
 </div>
 
+<!-- EDIT SUBTASK MODAL -->
 <div id="editSubtaskModal" class="modal">
   <div class="modal-content">
-    
     <h2>Edit Subtask</h2>
     <input type="text" id="editSubtaskTitle" placeholder="Subtask Title">
     <input type="text" id="editSubtaskAssignedTo" placeholder="Assign Person">
     <input type="date" id="editSubtaskDeadline">
     <input type="text" id="editSubtaskRemarks" placeholder="Remarks">
-    
     <select id="editSubtaskStatus">
       <option value="Pending">Pending</option>
+      <option value="In Progress">In Progress</option>
       <option value="Completed">Completed</option>
     </select>
-    
     <div class="modalButtons">
       <button id="saveSubtaskEditBtn">Save</button>
       <button id="cancelSubtaskEditBtn" class="deleteBtn">Cancel</button>
